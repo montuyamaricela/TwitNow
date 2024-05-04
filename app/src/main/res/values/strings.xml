@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TwitNow</string>
+    <string name="don_t_have_an_account_signup">Don\'t have an account? Signup</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="Email">Email</string>
+    <string name="logo">Logo</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="have_an_account_signin">have an account? Signin</string>
+    <string name="register">Register</string>
+    <string name="save">Save</string>
+    <string name="full_name">Full Name</string>
+    <string name="profile">profile\n</string>
+    <string name="logout">logout</string>
+    <string name="Username">Username\n</string>
+    <string name="Select_Image">Select Image</string>
+</resources>

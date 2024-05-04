@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "608141012348",
+    "project_id": "twitnow-e11ac",
+    "storage_bucket": "twitnow-e11ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608141012348:android:e8c74b5743d3e92e67c8f9",
+        "android_client_info": {
+          "package_name": "com.example.twitnow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm4WKb3VCrKnUG8WTwWvt8QX5t059uT10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

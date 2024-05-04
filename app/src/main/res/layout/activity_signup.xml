@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fontFamily="@font/inter"
+    tools:context=".Signup">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/twitnow"
+            tools:srcCompat="@drawable/twitnow"
+            android:contentDescription="@string/logo"/>
+
+        <EditText
+            android:id="@+id/RegEmail"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/edittext_rounded_corners"
+            android:ellipsize="start"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="@string/Email"
+            android:inputType="text"
+            android:textColor="#99AAB5"
+            android:textColorHint="#99AAB5"
+            android:textSize="13sp"
+            />
+
+        <EditText
+            android:id="@+id/RegPassword"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/RegEmail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_rounded_corners"
+            android:ellipsize="start"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="#99AAB5"
+            android:textColorHint="#99AAB5"
+            android:textSize="13sp" />
+        <EditText
+            android:id="@+id/RegConfirmPassword"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/RegPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_rounded_corners"
+            android:ellipsize="start"
+            android:gravity="center_vertical|center_horizontal"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            android:textColor="#99AAB5"
+            android:textColorHint="#99AAB5"
+            android:textSize="13sp" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/RegConfirmPassword"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/progressBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_rounded_corners"
+            android:backgroundTint="#99AAB5"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
+
+
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="225dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/register"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/white"
+            android:onClick="goToLogin"
+            android:text="@string/have_an_account_signin"
+            android:textColor="#99AAB5"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
+
