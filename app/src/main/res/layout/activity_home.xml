@@ -23,7 +23,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/profile"
+                android:src="@drawable/profile_icon"
                 android:contentDescription="@string/profile"
                 android:scaleType="centerCrop"/>
 
