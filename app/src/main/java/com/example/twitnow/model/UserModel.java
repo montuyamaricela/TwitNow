@@ -4,6 +4,8 @@ public class UserModel {
     private String fullName;
     private String username;
     private String image;
+    private String email;
+    private String userID;
 
 
     // Required default constructor
@@ -12,10 +14,28 @@ public class UserModel {
     }
 
 
-    public UserModel(String fullName, String username, String image) {
+    public UserModel(String fullName, String username, String image, String email, String userID) {
         this.fullName = fullName;
         this.username = username;
         this.image = image;
+        this.email = email;
+        this.userID = userID;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getImage() {

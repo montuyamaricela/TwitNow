@@ -30,7 +30,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/profile"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher_foreground" />
+                android:src="@color/black" />
 
         </androidx.cardview.widget.CardView>
 

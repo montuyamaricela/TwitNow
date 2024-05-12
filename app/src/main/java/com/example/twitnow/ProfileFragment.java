@@ -9,7 +9,6 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -25,11 +24,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.twitnow.model.UserModel;
 import com.example.twitnow.utils.FirebaseUtil;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -49,23 +45,6 @@ public class ProfileFragment extends Fragment {
     ProgressBar progressBar;
     TextView logout;
 
-//    private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-//        if (result.getResultCode() == Activity.RESULT_OK) {
-//            Intent data = result.getData();
-//            if (data != null) {
-//                Uri imageData = data.getData();
-//                if (imageData != null && userProfile != null && getContext() != null) {
-//                    Glide.with(requireContext()).load(imageData).into(userProfile);
-//                } else {
-//                    Toast.makeText(requireContext(), "Image data or ImageView is null", Toast.LENGTH_SHORT).show();
-//                }
-//            } else {
-//                Toast.makeText(requireContext(), "Intent data is null", Toast.LENGTH_SHORT).show();
-//            }
-//        } else {
-//            Toast.makeText(requireContext(), "Please select an image", Toast.LENGTH_SHORT).show();
-//        }
-//    });
 
     private final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
@@ -141,8 +120,10 @@ public class ProfileFragment extends Fragment {
         if (image == null) {
             // If no image is selected, proceed with only user details update
             updateUserDetails(null, username, fullName);
+            Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show();
         } else {
             // If image is selected, upload the image to Firebase Storage
+            Toast.makeText(requireContext(), "Updated Successfully!", Toast.LENGTH_SHORT).show();
             uploadImage(username, fullName);
         }
     }
@@ -176,14 +157,17 @@ public class ProfileFragment extends Fragment {
                 userModel.setImage(imageUrl.toString()); // Change to setImage()
             }
         } else {
-            userModel = new UserModel(fullName, username, imageUrl != null ? imageUrl.toString() : null); // Provide imageUrl as the third argument
+            Toast.makeText(requireContext(), "Profile successfully updated!", Toast.LENGTH_SHORT).show();
+            userModel = new UserModel(fullName, username, imageUrl != null ? imageUrl.toString() : null, user.getEmail(), FirebaseUtil.currentUserId()); // Provide imageUrl as the third argument
         }
-
+        progressBar.setVisibility(View.VISIBLE);
+        updateUser.setVisibility(View.GONE);
         FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(task -> {
             progressBar.setVisibility(View.GONE);
             updateUser.setVisibility(View.VISIBLE);
             if (task.isSuccessful()) {
                 // Direct to profile page
+                Toast.makeText(requireContext(), "Updated successfully!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(requireContext(), MainActivity.class);
                 startActivity(intent);
             } else {
@@ -195,6 +179,8 @@ public class ProfileFragment extends Fragment {
 
 
     void fetchUserDetails(){
+        progressBar.setVisibility(View.VISIBLE);
+        updateUser.setVisibility(View.GONE);
         FirebaseUtil.currentUserDetails().get().addOnCompleteListener(task -> {
             progressBar.setVisibility(View.GONE);
             updateUser.setVisibility(View.VISIBLE);
@@ -209,13 +195,7 @@ public class ProfileFragment extends Fragment {
                         Glide.with(requireContext().getApplicationContext()).load(userModel.getImage()).into(userProfile);
                     }
 
-                    // Check if the username already exists
-                    if (userModel.getUsername() != null && !userModel.getUsername().isEmpty()) {
-                        // If username exists, set EditText as non-editable
-                        usernameInput.setEnabled(false);
-                        usernameInput.setFocusable(false);
-                        usernameInput.setFocusableInTouchMode(false);
-                    }
+
                 }
             }
         });

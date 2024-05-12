@@ -1,5 +1,6 @@
 [versions]
 agp = "8.3.0"
+firebaseUiFirestore = "8.0.2"
 glide = "4.14.2"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -14,8 +15,11 @@ firebaseFirestore = "25.0.0"
 firebaseStorage = "21.0.0"
 navigationFragment = "2.7.7"
 navigationUi = "2.7.7"
+firebaseMessaging = "24.0.0"
+firebaseAnalytics = "22.0.0"
 
 [libraries]
+firebase-ui-firestore = { module = "com.firebaseui:firebase-ui-firestore", version.ref = "firebaseUiFirestore" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -30,6 +34,8 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

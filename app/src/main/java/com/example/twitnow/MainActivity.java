@@ -2,11 +2,10 @@ package com.example.twitnow;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,20 +15,17 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.example.twitnow.model.UserModel;
 import com.example.twitnow.utils.FirebaseUtil;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
-    ImageView profile, search;
     FirebaseUser user;
     UserModel userModel;
+    ImageView profile, search;
 
     BottomNavigationView bottomNavigationView;
 
@@ -49,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         search = findViewById(R.id.search);
         profile = findViewById(R.id.profile);
         bottomNavigationView = findViewById(R.id.bottomNavigation);
-
 
         chatFragment = new ChatFragment();
         profileFragment = new ProfileFragment();
@@ -87,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             goToEditProfile();
         });
 
+        getFCMToken();
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0); // Remove bottom padding
@@ -112,8 +109,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToEditProfile(){
-        Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+        Intent intent = new Intent(getApplicationContext(), Profile.class);
         startActivity(intent);
         finish();
     }
+
+    void getFCMToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                String token = task.getResult();
+                Log.i("My Token here-> ", token);
+//                FirebaseUtil.currentUserDetails().update("fcmToken",token);
+
+            }
+        });
+    }
+
 }

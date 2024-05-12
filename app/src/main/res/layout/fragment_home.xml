@@ -6,11 +6,42 @@
     tools:context=".ChatFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@id/post_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Home Screen"
-        android:textSize="22sp"
-        android:layout_centerInParent="true"/>
+        android:layout_margin="20dp">
+        <EditText
+            android:id="@+id/post"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/edittext_rounded_corners"
+            android:textSize="14sp"
+            android:padding="20dp"
+            android:gravity="top"
+            android:textColor="#99AAB5"
+            android:hint="@string/what_s_on_your_mind"
+            tools:ignore="RtlSymmetry" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/post_btn"
+            android:layout_below="@id/post"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/button_rounded_corners"
+            android:backgroundTint="#FFCC4D"
+            android:text="@string/post"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/post_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/post_parent"
+        android:layout_height="wrap_content"
+        />
 
 </RelativeLayout>

@@ -18,6 +18,12 @@
         android:theme="@style/Theme.TwitNow"
         tools:targetApi="31">
         <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".SearchActivity"
             android:exported="false" />
         <activity
@@ -33,9 +39,6 @@
             android:name=".EditProfile"
             android:exported="false" />
         <activity
-            android:name=".home"
-            android:exported="false" />
-        <activity
             android:name=".Signup"
             android:exported="false" />
         <activity
@@ -45,6 +48,14 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name=".FCMNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

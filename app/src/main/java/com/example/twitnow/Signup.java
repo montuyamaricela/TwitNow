@@ -36,7 +36,7 @@ public class Signup extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             // if the user is logged in, open the home activity
-            Intent intent = new Intent(getApplicationContext(), home.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
         }
@@ -97,6 +97,9 @@ public class Signup extends AppCompatActivity {
                                 btnRegister.setVisibility(View.VISIBLE);
                                 if (task.isSuccessful()) {
                                     Toast.makeText(Signup.this, "Account Created", Toast.LENGTH_SHORT).show();
+                                    Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(startIntent);
+                                    finish();
                                 } else {
                                     Toast.makeText(Signup.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                                 }
@@ -107,7 +110,7 @@ public class Signup extends AppCompatActivity {
     }
 
     public void goToLogin(View v){
-        Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent startIntent = new Intent(getApplicationContext(), login.class);
         startActivity(startIntent);
         finish();
     }

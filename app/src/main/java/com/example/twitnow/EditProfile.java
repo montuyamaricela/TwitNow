@@ -29,11 +29,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-
-
 
 public class EditProfile extends AppCompatActivity {
     StorageReference storageReference;
@@ -186,7 +183,7 @@ public class EditProfile extends AppCompatActivity {
                 userModel.setImage(imageUrl.toString()); // Change to setImage()
             }
         } else {
-            userModel = new UserModel(fullName, username, imageUrl != null ? imageUrl.toString() : null); // Provide imageUrl as the third argument
+            userModel = new UserModel(fullName, username, imageUrl != null ? imageUrl.toString() : null, user.getEmail(), FirebaseUtil.currentUserId()); // Provide imageUrl as the third argument
         }
 
         FirebaseUtil.currentUserDetails().set(userModel).addOnCompleteListener(task -> {
@@ -213,7 +210,7 @@ public class EditProfile extends AppCompatActivity {
                 if (task.isSuccessful()){
                     userModel = task.getResult().toObject(UserModel.class);
                     if (userModel != null){
-                        usernameInput.setText(userModel.getUsername());
+                        usernameInput.setText("@"+userModel.getUsername());
                         userFullName.setText(userModel.getFullName());
 
                         // Load image into userProfile ImageView
