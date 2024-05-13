@@ -36,7 +36,6 @@ public class RecentChatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatRoom
             if (task.isSuccessful()){
                 boolean lastMessageSentByMe = model.getLastMessageSenderId().equals(FirebaseUtil.currentUserId());
 
-
                 UserModel otherUserModel = task.getResult().toObject(UserModel.class);
                 if (otherUserModel != null && otherUserModel.getImage() != null) {
                     AndroidUtil.setProfilePic(context, otherUserModel.getImage(), holder.userProfile);

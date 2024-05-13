@@ -19,6 +19,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.Query;
 
+import java.util.UUID;
+
 public class homeFragment extends Fragment {
     public homeFragment() {
         // Required empty public constructor
@@ -75,7 +77,6 @@ public class homeFragment extends Fragment {
             public void onItemRangeInserted(int positionStart, int itemCount) {
                 super.onItemRangeInserted(positionStart, itemCount);
                 recyclerView.smoothScrollToPosition(0);
-
             }
         });
 
@@ -83,13 +84,17 @@ public class homeFragment extends Fragment {
 
 
     void post(String post){
-        postModel = new PostModel(FirebaseUtil.currentUserId(), postID, post,Timestamp.now()); // Initialize postModel here
+        String postId = UUID.randomUUID().toString(); // Generate a unique postId
 
-        FirebaseUtil.allPostCollectionReference().add(postModel).addOnCompleteListener(task-> {
-            if (task.isSuccessful()){
-                postMessage.setText("");
-            }
-        });
+        postModel = new PostModel(FirebaseUtil.currentUserId(), postId, post, Timestamp.now()); // Initialize postModel here
+
+        FirebaseUtil.allPostCollectionReference().document(postId).set(postModel)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        postMessage.setText("");
+                    }
+                });
+
 
     }
 }

@@ -30,7 +30,8 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/profile"
                 android:scaleType="centerCrop"
-                android:src="@drawable/circle_background"
+                android:src="@color/black"
+
                 />
 
         </androidx.cardview.widget.CardView>
@@ -61,6 +62,7 @@
         android:layout_below="@+id/toolbar"
         android:layout_margin="20dp"
         >
+
         <androidx.cardview.widget.CardView
             android:id="@+id/profileCard"
             android:layout_width="150dp"
@@ -70,14 +72,13 @@
             android:layout_marginStart="20dp"
             >
 
-            <ImageView
-                android:id="@+id/userProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/profile"
-                android:scaleType="centerCrop"
-                android:src="@color/black" />
-
+        <ImageView
+            android:id="@+id/userProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/profile"
+            android:scaleType="centerCrop"
+            android:src="@color/black" />
 
         </androidx.cardview.widget.CardView>
         <TextView

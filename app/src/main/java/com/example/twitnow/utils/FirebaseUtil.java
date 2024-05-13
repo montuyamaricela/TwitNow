@@ -74,4 +74,6 @@ public class FirebaseUtil {
     public static DocumentReference getPostReference(String postId) {
         return FirebaseFirestore.getInstance().collection("posts").document(postId);
     }
+
+    // get document id for posts collection
 }

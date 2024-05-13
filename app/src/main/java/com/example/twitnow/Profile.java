@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.twitnow.adapter.PostRecyclerAdapter;
+import com.example.twitnow.adapter.ProfilePostRecyclerAdapter;
 import com.example.twitnow.model.PostModel;
 import com.example.twitnow.model.UserModel;
 import com.example.twitnow.utils.FirebaseUtil;
@@ -30,7 +31,7 @@ public class Profile extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
     UserModel userModel;
-    PostRecyclerAdapter adapter;
+    ProfilePostRecyclerAdapter adapter;
     RecyclerView recyclerView;
 
 
@@ -82,7 +83,7 @@ public class Profile extends AppCompatActivity {
                 .setQuery(query, PostModel.class)
                 .build();
 
-        adapter = new PostRecyclerAdapter(options, this);
+        adapter = new ProfilePostRecyclerAdapter(options, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         adapter.startListening();

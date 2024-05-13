@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         >
         <androidx.cardview.widget.CardView
             android:layout_width="52dp"
@@ -36,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginStart="10dp"
             android:layout_gravity="center">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -66,14 +68,41 @@
                 android:layout_height="wrap_content"
                 tools:text="Post message here"
                 />
+
+            <RelativeLayout
+                android:id="@+id/deleteContainer"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/delete_button"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/delete"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/deleteicon"/>
+                <TextView
+                    android:id="@+id/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/delete"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="#99AAB5"
+                    android:layout_toEndOf="@id/delete_button"
+                    android:textSize="13sp"
+                    />
+            </RelativeLayout>
         </LinearLayout>
+
     </LinearLayout>
 
 
     <View
         android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="20dp"

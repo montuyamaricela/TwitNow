@@ -31,4 +31,6 @@
     <string name="post">Post</string>
     <string name="fullname">Fullname</string>
     <string name="posts">Posts</string>
+    <string name="delete">Delete</string>
+    <string name="deleteicon">deleteIcon</string>
 </resources>
